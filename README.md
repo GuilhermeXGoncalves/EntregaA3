@@ -25,9 +25,9 @@
 + The application can be developed in Java, Python or JavaScript.
 + The team can choose to implement the solution using sockets, RPC, API or Message Queues.
 
-## Como rodar?
-+ Clone o repositório para sua máquina
-+ Certifique se tem o sqlite3, flask e o pyhton instalado na máquina 
-+ Rodar o arquivo "rodar_antes.py"
-+ Logo após, rodar o server.py
+## Como rodar? 💻
++ Clone o repositório para sua máquina.
++ É necessário ter instalado o pyhton, flask e o sqlite3 na sua máquina. 
++ Rodar o arquivo "rodar_antes.py".
++ Logo após, rodar o server.py.
 
