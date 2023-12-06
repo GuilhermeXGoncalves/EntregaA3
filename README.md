@@ -27,7 +27,7 @@
 
 ## Como rodar? 💻
 + Clone o repositório para sua máquina.
-+ É necessário ter instalado o pyhton, flask e o sqlite3 na sua máquina. 
++ É necessário ter instalado o python, flask e o sqlite3 na sua máquina. 
 + Rodar o arquivo "rodar_antes.py".
 + Logo após, rodar o server.py.
 
