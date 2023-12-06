@@ -24,3 +24,10 @@
 + System must start with at least 10 (ten) registered products and 5 (five) customers.
 + The application can be developed in Java, Python or JavaScript.
 + The team can choose to implement the solution using sockets, RPC, API or Message Queues.
+
+## Como rodar?
++ Clone o repositório para sua máquina
++ Certifique se tem o sqlite3, flask e o pyhton instalado na máquina 
++ Rodar o arquivo "rodar_antes.py"
++ Logo após, rodar o server.py
+
