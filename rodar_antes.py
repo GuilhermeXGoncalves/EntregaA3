@@ -48,8 +48,15 @@ def adicionaProduto():
     criarProdutoBancoDeDados('SOFÁ', 1999.90, 4000)
 
 
+def criarTabelaVendaBancoDeDados():
+    comando = 'CREATE TABLE IF NOT EXISTS vendas (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, id_cliente INTEGER NOT NULL, data_venda TEXT NOT NULL, FOREIGN KEY (id_cliente) REFERENCES clientes(id))'
+    cursor.execute(comando)
+    conexao.commit()
+
+
 criarTabelaClienteBancoDeDados()
 adicionaCliente()
 criarTabelaProdutoBancoDeDados()
 adicionaProduto()
+criarTabelaVendaBancoDeDados()
 
