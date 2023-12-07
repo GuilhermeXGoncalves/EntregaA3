@@ -1,7 +1,9 @@
 import sqlite3
+from datetime import datetime
 conexao = sqlite3.connect('loja.db', check_same_thread=False)  
 cursor = conexao.cursor()
 
+#PARTE DO CLIENTE --------------------------------------------------------
 
 def criarTabelaClienteBancoDeDados():
     comando = 'CREATE TABLE IF NOT EXISTS clientes (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, telefone VARCHAR(11) NOT NULL,cpf VARCHAR(11) NOT NULL)'
@@ -22,6 +24,8 @@ def adicionaCliente():
     criarClienteBancoDeDados('Elaine' , '71987335906' , '98732165444')
     criarClienteBancoDeDados('Sabrina' , '71992032981' , '45698712333')
 
+
+#PARTE DOS PRODUTOS --------------------------------------------------------------------------
 
 def criarTabelaProdutoBancoDeDados():
     comando = 'CREATE TABLE IF NOT EXISTS produtos (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome_produto TEXT NOT NULL, preco_produto FLOAT NOT NULL,qtd_produto INTEGER NOT NULL)'
@@ -47,6 +51,8 @@ def adicionaProduto():
     criarProdutoBancoDeDados('MÁQUINA DE LAVAR', 3899.90, 189)
     criarProdutoBancoDeDados('SOFÁ', 1999.90, 4000)
 
+
+#PARTE DE VENDAS ----------------------------------------------------------------------------
 
 def criarTabelaVendaBancoDeDados():
     comando = 'CREATE TABLE IF NOT EXISTS vendas (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, id_cliente INTEGER NOT NULL, data_venda TEXT NOT NULL, FOREIGN KEY (id_cliente) REFERENCES clientes(id))'

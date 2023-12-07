@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Produtos Com Estoque Baixo</H1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>PREÇO</th>
+            <th>QTD.</th>
+        </tr>
+        {% for produto in produtos %}
+        <tr>
+            <td>{{ produto[0] }}</td>
+            <td>{{ produto[1] }}</td>
+            <td>{{ produto[2] }}</td>
+            <td>{{ produto[3] }}</td>
+            <td>{{ produto[4] }}</td>
+            <td>{{ produto[5] }}</td>
+            <td>{{ produto[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Voltar</a>
+</body>
+</html>

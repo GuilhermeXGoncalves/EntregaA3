@@ -1,8 +1,7 @@
 from flask import Flask, redirect, render_template, request, jsonify
-import sqlite3
-import client
-import estoque 
-import venda
+import database, client, estoque, venda
+conexao = database.conexao
+cursor = database.conexao.cursor()
 
 app = Flask(__name__)
 
@@ -17,8 +16,6 @@ def home():
 #LER TODOS CLIENTES
 @app.route('/clientes', methods=['GET'])
 def clientes():
-    conexao = sqlite3.connect('loja.db', check_same_thread=False)
-    cursor = conexao.cursor()
     cursor.execute("SELECT * FROM clientes")
     clientes = cursor.fetchall()
     return render_template('clientes.html', clientes=clientes)
@@ -44,8 +41,6 @@ def add_cliente():
 #LER TODOS OS PRODUTOS
 @app.route('/produtos', methods=['GET'])
 def produtos():
-    conexao = sqlite3.connect('loja.db', check_same_thread=False)
-    cursor = conexao.cursor()
     cursor.execute("SELECT * FROM produtos")
     produtos = cursor.fetchall()
     return render_template('produtos.html', produtos=produtos)
@@ -77,12 +72,27 @@ def registrar_venda():
 # CONSULTAR TODAS AS VENDAS
 @app.route('/vendas', methods=['GET'])
 def obter_todas_vendas():
-    vendas = venda.obterTodasVendas()
-    return jsonify(vendas)
+    cursor.execute("SELECT * FROM vendas")
+    vendas = cursor.fetchall()
+    return render_template('vendas.html', vendas = vendas)
 
 #LER VENDA POR ID
 #EDITAR VENDA
 #DELETAR VENDA
+
+#RELATÓRIOS -----------------------------------------------
+@app.route('/relatorios')
+def relatorio():
+    return render_template('relatorio.html')
+
+@app.route('/relatorios/estoquebaixo', methods=['GET'])
+def prod_baixo_estoque():
+    qtd_minima_produto = 150
+    comando = f'SELECT id , nome_produto , preco_produto, qtd_produto FROM produtos WHERE qtd_produto <= "{qtd_minima_produto}"'
+    cursor.execute(comando)
+    produtos = cursor.fetchall()
+    return render_template('estoqueBaixo.html', produtos=produtos)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

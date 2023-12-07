@@ -14,7 +14,4 @@ def prodBaixoEstoque():
     comando = f'SELECT id , nome_produto , preco_produto, qtd_produto FROM produtos WHERE qtd_produto <= "{qtd_minima_produto}"'
     cursor.execute(comando)
     resultado = cursor.fetchall()
-    print('='*45)
-    print('PRODUTOS COM ESTOQUE ABAIXO DE {} peças'.format(qtd_minima_produto))
-    print('='*45)
-    print(resultado)
+    return resultado
