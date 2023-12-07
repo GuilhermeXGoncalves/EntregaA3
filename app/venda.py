@@ -1,4 +1,3 @@
-from flask import request
 from datetime import datetime
 import database
 conexao = database.conexao

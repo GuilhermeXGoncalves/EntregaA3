@@ -1,4 +1,4 @@
-import estoque, client
+import estoque, client, venda
 from flask import Flask, jsonify, render_template, request
 
 
@@ -86,6 +86,23 @@ def deleta_client_db(id):
     return jsonify(cliente)
 
 # CADASTRAR CLIENTE
+
+
+
+# REGISTRAR VENDA
+@app.route('/vendas/add', methods=['POST'])
+def registrar_venda():
+    data = request.get_json()
+    id_cliente = data['id_cliente']
+    produtos = data['produtos']
+    venda.registrarVenda(id_cliente, produtos)
+    return ('OK')
+
+# CONSULTAR TODAS AS VENDAS
+@app.route('/vendas', methods=['GET'])
+def obter_todas_vendas():
+    vendas = venda.obterTodasVendas()
+    return jsonify(vendas)
 
 
 if __name__ == "__main__":
