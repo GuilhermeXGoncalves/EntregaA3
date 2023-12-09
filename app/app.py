@@ -21,7 +21,7 @@ def clientes():
     return render_template('clientes.html', clientes=clientes)
 
 
-#ADICIONA CLIENTE
+#ADICIONA CLIENTE - PRECISA CRIAR O FORMULÁRIO PARA ADICIONAR
 @app.route('/clientes/add', methods=['POST'])
 def add_cliente():
     nome = request.form.get('nome')
@@ -43,9 +43,9 @@ def add_cliente():
 def produtos():
     cursor.execute("SELECT * FROM produtos")
     produtos = cursor.fetchall()
-    return render_template('produtos.html', produtos=produtos)
+    return render_template('produtos.html' , produtos=produtos)
 
-#ADICIONA PRODUTOS
+#ADICIONA PRODUTOS - PRECISA CRIAR O FORMULÁRIO PARA ADICIONAR
 @app.route('/produtos/add', methods=['POST'])
 def add_produto():
     nome = request.form.get('nome')
@@ -60,16 +60,16 @@ def add_produto():
 
 #VENDAS -------------------------------------------------
 
-# REGISTRAR VENDA
+# REGISTRAR VENDA - PRECISA CRIAR O FORMULÁRIO PARA ADICIONAR
 @app.route('/vendas/add', methods=['POST'])
 def registrar_venda():
     data = request.get_json()
     id_cliente = data['id_cliente']
-    produtos = data['produtos']
+    produtos = data['produto']
     venda.registrarVenda(id_cliente, produtos)
     return ('OK')
 
-# CONSULTAR TODAS AS VENDAS
+# CONSULTAR TODAS AS VENDAS - ADC QUANTIDADE DE PRODUTOS E QUAL PRODUTO
 @app.route('/vendas', methods=['GET'])
 def obter_todas_vendas():
     cursor.execute("SELECT * FROM vendas")
@@ -87,7 +87,7 @@ def relatorio():
 
 @app.route('/relatorios/estoquebaixo', methods=['GET'])
 def prod_baixo_estoque():
-    qtd_minima_produto = 150
+    qtd_minima_produto = 100
     comando = f'SELECT id , nome_produto , preco_produto, qtd_produto FROM produtos WHERE qtd_produto <= "{qtd_minima_produto}"'
     cursor.execute(comando)
     produtos = cursor.fetchall()
