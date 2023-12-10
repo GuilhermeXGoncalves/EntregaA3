@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Relatório de Produtos por Cliente</title>
+</head>
+<body>
+    <h1>Relatório de Produtos por Cliente</h1>
+    {% for cliente, dados in relatorio.items() %}
+        <h2>{{ cliente }}</h2>
+        <p>Data: {{ dados['data'] }}</p>
+        <p>Produtos:</p>
+        <ul>
+            {% for produto in dados['produtos'] %}
+                <li>{{ produto }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

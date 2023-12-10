@@ -12,8 +12,7 @@ def criarTabelaClienteBancoDeDados():
 
 # CRIAR CLIENTE
 def criarClienteBancoDeDados(nome, telefone, cpf):
-    comando = f'INSERT INTO clientes (nome , telefone, cpf) VALUES ("{
-        nome}" , "{telefone}" , "{cpf}")'
+    comando = f'INSERT INTO clientes (nome , telefone, cpf) VALUES ("{nome}" , "{telefone}" , "{cpf}")'
     cursor.execute(comando)
     conexao.commit()
 

@@ -6,27 +6,17 @@
     <title>Vendas</title>
 </head>
 <body>
-    <H1>PARTE DE VENDAS</H1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>ID Cli.</th>
-            <th>DATA</th>
-            <th>PROD</th>
-            <th>QTD.</th>
-        </tr>
-        {% for venda in vendas %}
-        <tr>
-            <td>{{ venda[0] }}</td>
-            <td>{{ venda[1] }}</td>
-            <td>{{ venda[2] }}</td>
-            <td>{{ venda[3] }}</td>
-            <td>{{ venda[4] }}</td>
-            <td>{{ venda[5] }}</td>
-            <td>{{ venda[6] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="/">Voltar</a>
+    <h2>Formulário de Venda</h2>
+
+<form action="/registrar_venda" method="post">
+  <label for="id_cliente">ID do Cliente:</label><br>
+  <input type="text" id="id_cliente" name="id_cliente"><br>
+  <label for="id_produto">ID do Produto:</label><br>
+  <input type="text" id="id_produto" name="id_produto"><br>
+  <label for="quantidade">Quantidade:</label><br>
+  <input type="text" id="quantidade" name="quantidade"><br>
+  <input type="submit" value="Registrar Venda">
+</form>
+
 </body>
 </html>
